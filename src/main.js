@@ -13,6 +13,9 @@ import router from './router'
 // cssVars()
 
 Vue.use(BootstrapVue)
+const moment = require('moment');
+moment.locale('ko');
+Vue.prototype.$moment = moment;
 
 /* eslint-disable no-new */
 new Vue({
