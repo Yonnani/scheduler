@@ -1,36 +1,44 @@
 <template>
-  <div class="animated fadeIn">
-    <b-row>
-      <b-col><h1>{{ now }}</h1></b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-button variant="primary">Add Category</b-button>
-      </b-col>
-    </b-row>
-    <b-row v-for="hour in hours" :key="hour">
-      <b-col class="pr-0">
-        <div class="time">{{ hour.toString().padStart(2, '0') }}</div>
-      </b-col>
-      <b-col class="px-0">
-        <div class="time">
-          <span>-</span>
-          <!--<a href="#">-->
-            <!--<i class="fa fa-plus-square-o fa-lg"></i>-->
-          <!--</a>-->
-        </div>
-      </b-col>
-      <b-col class="pl-0">
-        <div class="time">-</div>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-card :header="now">
-        <b-table dark hover striped bordered small fixed responsive
-                 :items="hours"><!--  :fields="captions" -->
-        </b-table>
-      </b-card>
-    </b-row>
+  <div class="animated fadeIn pt-5">
+    <b-card>
+      <div slot="header">
+        <b-row class="d-flex justify-content-between px-3">
+          <a href="#">
+            <i class="fa fa-angle-left fa-lg"></i>
+          </a>
+          <span>{{ now }}</span>
+          <a href="#">
+            <i class="fa fa-angle-right fa-lg"></i>
+          </a>
+        </b-row>
+      </div>
+      <b-row class="pb-2 text-right">
+        <b-col>
+          <b-button class="mr-1" variant="outline-primary">
+            Add Category
+          </b-button>
+          <b-button class=""variant="outline-primary">
+            Add Schedule
+          </b-button>
+        </b-col>
+      </b-row>
+      <table class="table b-table table-striped table-hover table-bordered b-table-fixed">
+        <thead>
+        <tr>
+          <td>Hour</td>
+          <td>Work</td>
+          <td>Life</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="row in schedule">
+          <td>{{ row.hour.toString().padStart(2, '0') }}</td>
+          <td class="yon-pointer" :style="row.work==='work' ? {backgroundColor: '#ffc107'} : {}">{{ row.work }}</td>
+          <td class="yon-pointer" :style="row.life==='sleep' ? {backgroundColor: '#63c2de'} : {}">{{ row.life }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </b-card>
   </div>
 </template>
 
@@ -41,6 +49,26 @@ export default {
   data() {
     return {
       now: null,
+      schedule: [
+        {
+          hour: 0, work: null, life: "sleep"
+        },
+        {
+          hour: 1, work: null, life: "sleep"
+        },
+        {
+          hour: 2, work: null, life: "sleep"
+        },
+        {
+          hour: 3, work: null, life: "sleep"
+        },
+        {
+          hour: 10, work: "work", life: null
+        },
+        {
+          hour: 11, work: "work", life: null
+        }
+      ],
       hours: []
     }
   },
@@ -55,12 +83,7 @@ export default {
 </script>
 
 <style>
-  .time {
-    border: solid #20a8d8 1px;
+  .yon-pointer {
     cursor: pointer;
-  }
-
-  .time:hover {
-    background-color: #20a8d8;
   }
 </style>
