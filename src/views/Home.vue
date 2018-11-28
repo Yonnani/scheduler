@@ -14,10 +14,10 @@
       </div>
       <b-row class="pb-2 text-right">
         <b-col>
-          <b-button class="mr-1" variant="outline-primary">
+          <b-button class="mr-1" variant="outline-primary" v-b-modal.add-category-modal>
             Add Category
           </b-button>
-          <b-button class=""variant="outline-primary">
+          <b-button class=""variant="outline-primary" v-b-modal.add-schedule-modal>
             Add Schedule
           </b-button>
         </b-col>
@@ -39,6 +39,44 @@
         </tbody>
       </table>
     </b-card>
+
+    <b-modal id="add-category-modal" title="Add Category" ok-title="Add">
+      <b-form>
+        <b-form-group label="Category Name"
+                      label-for="category-name-input">
+          <b-form-input id="category-name-input"
+                        type="text"
+                        v-model="categoryName">
+          </b-form-input>
+        </b-form-group>
+        <b-form-group label="Category Color"
+                      label-for="category-color-input">
+          <b-form-input id="category-color-input"
+                        type="color"
+                        v-model="categoryColor">
+          </b-form-input>
+        </b-form-group>
+      </b-form>
+    </b-modal>
+
+    <b-modal id="add-schedule-modal" title="Add Schedule" ok-title="Add">
+      <b-form>
+        <b-form-group label="Category Name"
+                      label-for="category-name-input">
+          <b-form-input id="category-name-input"
+                        type="text"
+                        v-model="categoryName">
+          </b-form-input>
+        </b-form-group>
+        <b-form-group label="Category Color"
+                      label-for="category-color-input">
+          <b-form-input id="category-color-input"
+                        type="color"
+                        v-model="categoryColor">
+          </b-form-input>
+        </b-form-group>
+      </b-form>
+    </b-modal>
   </div>
 </template>
 
@@ -69,7 +107,9 @@ export default {
           hour: 11, work: "work", life: null
         }
       ],
-      hours: []
+      hours: [],
+      categoryName: '',
+      categoryColor: ''
     }
   },
   mounted() {
