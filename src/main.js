@@ -6,6 +6,8 @@ import 'core-js/es7/array'
 // import cssVars from 'css-vars-ponyfill'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import VCalendar from 'v-calendar'
+import 'v-calendar/lib/v-calendar.min.css'
 import App from './App'
 import router from './router'
 
@@ -13,6 +15,9 @@ import router from './router'
 // cssVars()
 
 Vue.use(BootstrapVue)
+Vue.use(VCalendar, {
+  firstDayOfWeek: 1
+})
 const moment = require('moment');
 moment.locale('ko');
 Vue.prototype.$moment = moment;

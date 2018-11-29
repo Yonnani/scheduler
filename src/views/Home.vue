@@ -61,20 +61,10 @@
 
     <b-modal id="add-schedule-modal" title="Add Schedule" ok-title="Add">
       <b-form>
-        <b-form-group label="Category Name"
-                      label-for="category-name-input">
-          <b-form-input id="category-name-input"
-                        type="text"
-                        v-model="categoryName">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group label="Category Color"
-                      label-for="category-color-input">
-          <b-form-input id="category-color-input"
-                        type="color"
-                        v-model="categoryColor">
-          </b-form-input>
-        </b-form-group>
+        <v-date-picker
+          mode="single"
+          v-model="selectedValue">
+        </v-date-picker>
       </b-form>
     </b-modal>
   </div>
@@ -109,7 +99,8 @@ export default {
       ],
       hours: [],
       categoryName: '',
-      categoryColor: ''
+      categoryColor: '',
+      selectedValue: new Date()
     }
   },
   mounted() {
