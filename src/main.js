@@ -10,14 +10,37 @@ import VCalendar from 'v-calendar'
 import 'v-calendar/lib/v-calendar.min.css'
 import App from './App'
 import router from './router'
+import firebase from 'firebase'
 
-// todo
-// cssVars()
+/*
+ * firebase setting
+ */
+var firebaseConfig = {
+  apiKey: "AIzaSyD47LTOvh9LhQWAnSJDpSR1z1ep-JZXvog",
+  authDomain: "yonnani-scheduler.firebaseapp.com",
+  databaseURL: "https://yonnani-scheduler.firebaseio.com",
+  projectId: "yonnani-scheduler",
+  storageBucket: "yonnani-scheduler.appspot.com",
+  messagingSenderId: "476750876438"
+};
+firebase.initializeApp(firebaseConfig);
+Vue.prototype.$firebase = firebase;
 
+/*
+ * bootstrap-vue
+ */
 Vue.use(BootstrapVue)
+
+/*
+ * vcalendar
+ */
 Vue.use(VCalendar, {
   firstDayOfWeek: 1
 })
+
+/*
+ * momentjs setting
+ */
 const moment = require('moment');
 moment.locale('ko');
 Vue.prototype.$moment = moment;
