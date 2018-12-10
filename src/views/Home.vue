@@ -31,11 +31,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="row in schedule">
-          <td>{{ row.hour.toString().padStart(2, '0') }}</td>
-          <td class="yon-pointer" :style="row.work==='work' ? {backgroundColor: '#ffc107'} : {}">{{ row.work }}</td>
-          <td class="yon-pointer" :style="row.life==='sleep' ? {backgroundColor: '#63c2de'} : {}">{{ row.life }}</td>
-        </tr>
+        <!--<tr v-for="row in schedule">-->
+          <!--<td>{{ row.hour.toString().padStart(2, '0') }}</td>-->
+          <!--<td class="yon-pointer" :style="row.work==='work' ? {backgroundColor: '#ffc107'} : {}">{{ row.work }}</td>-->
+          <!--<td class="yon-pointer" :style="row.life==='sleep' ? {backgroundColor: '#63c2de'} : {}">{{ row.life }}</td>-->
+        <!--</tr>-->
+          <tr v-for="anHour in hours" :key="anHour">
+            <td>{{ anHour }}</td>
+            <td>{{ }}</td>
+            <td></td>
+          </tr>
         </tbody>
       </table>
     </b-card>
@@ -98,6 +103,8 @@ export default {
         }
       ],
       hours: [],
+      categories: [],
+      todayWorks: [],
       categoryName: '',
       categoryColor: '',
       selectedValue: new Date()
@@ -109,6 +116,34 @@ export default {
     setInterval(() => {
       this.now = this.$moment().format('YYYY MMMM Do, a h:mm:ss');
     }, 1000);
+
+    this.categories = [
+      {
+        name: 'work',
+        color: '#ffc107'
+      },
+      {
+        name: 'life',
+        color: '#63c2de'
+      }
+    ];
+
+    this.todayWorks = [
+      {
+        startDate: '2018-12-10',
+        endDate: '2018-12-10',
+        startTime: '09:30',
+        endTime: '10:30',
+        what: '출근 준비'
+      },
+      {
+        startDate: '2018-12-10',
+        endDate: '2018-12-10',
+        startTime: '10:30',
+        endTime: '10:45',
+        what: '출근'
+      }
+    ];
   }
 }
 </script>
