@@ -38,7 +38,16 @@
         <!--</tr>-->
           <tr v-for="anHour in hours" :key="anHour">
             <td>{{ anHour }}</td>
-            <td>{{ }}</td>
+            <td>
+              {{
+                todayWorks.filter(work => work.startDateTime.getHours() === anHour)
+                  .map(work => `${work.startDateTime.getMinutes()}min~ ${work.what}`).join(', ')
+              }}<br>
+              {{
+                todayWorks.filter(work => work.endDateTime.getHours() === anHour)
+                  .map(work => `~${work.endDateTime.getMinutes()}min ${work.what}`).join(', ')
+              }}
+            </td>
             <td></td>
           </tr>
         </tbody>
@@ -130,17 +139,13 @@ export default {
 
     this.todayWorks = [
       {
-        startDate: '2018-12-10',
-        endDate: '2018-12-10',
-        startTime: '09:30',
-        endTime: '10:30',
+        startDateTime: new Date('2018/12/10/09:30:00'),
+        endDateTime: new Date('2018/12/10/10:30:00'),
         what: '출근 준비'
       },
       {
-        startDate: '2018-12-10',
-        endDate: '2018-12-10',
-        startTime: '10:30',
-        endTime: '10:45',
+        startDateTime: new Date('2018/12/10/10:30:00'),
+        endDateTime: new Date('2018/12/10/10:45:00'),
         what: '출근'
       }
     ];
