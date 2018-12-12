@@ -31,22 +31,25 @@
         </tr>
         </thead>
         <tbody>
-        <!--<tr v-for="row in schedule">-->
-          <!--<td>{{ row.hour.toString().padStart(2, '0') }}</td>-->
-          <!--<td class="yon-pointer" :style="row.work==='work' ? {backgroundColor: '#ffc107'} : {}">{{ row.work }}</td>-->
-          <!--<td class="yon-pointer" :style="row.life==='sleep' ? {backgroundColor: '#63c2de'} : {}">{{ row.life }}</td>-->
-        <!--</tr>-->
+          <tr>
+            <td>테스트</td>
+            <td class="p-0">
+              <div style="border: 1px solid blue;"></div>
+            </td>
+            <td></td>
+          </tr>
           <tr v-for="anHour in hours" :key="anHour">
             <td>{{ anHour }}</td>
             <td>
-              {{
-                todayWorks.filter(work => work.startDateTime.getHours() === anHour)
-                  .map(work => `${work.startDateTime.getMinutes()}min~ ${work.what}`).join(', ')
-              }}<br>
-              {{
-                todayWorks.filter(work => work.endDateTime.getHours() === anHour)
-                  .map(work => `~${work.endDateTime.getMinutes()}min ${work.what}`).join(', ')
-              }}
+              <span v-html="todayWorks
+                              .filter(work => work.startDateTime.getHours() === anHour)
+                              .map(work => `${work.startDateTime.getMinutes()}min~ ${work.what}`)
+                              .join('<br>')" />
+              <br>
+              <span v-html="todayWorks
+                              .filter(work => work.endDateTime.getHours() === anHour)
+                              .map(work => `~${work.endDateTime.getMinutes()}min ${work.what}`)
+                              .join('<br>')" />
             </td>
             <td></td>
           </tr>
