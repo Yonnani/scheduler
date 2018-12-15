@@ -32,6 +32,31 @@
         </thead>
         <tbody>
           <tr>
+            <td rowspan="6">테스트</td>
+            <td style="background-color: indianred;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="background-color: aquamarine;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="background-color: beige;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
             <td>테스트</td>
             <td class="p-0">
               <div style="border: 1px solid blue;"></div>
