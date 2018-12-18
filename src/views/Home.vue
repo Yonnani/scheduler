@@ -1,5 +1,24 @@
 <template>
   <div class="animated fadeIn pt-5">
+    <b-card header="To do 리스트">
+      <b-row>
+        <b-col>
+          <b-button class="float-right" variant="outline-primary">Add To Do</b-button>
+        </b-col>
+      </b-row>
+      <hr>
+      <b-row>
+        <b-col>
+          <div v-for="todo in todoList"
+               :key="todo.id">
+            <b-form-checkbox v-model="todo.done">
+              {{ todo.content }}
+            </b-form-checkbox>
+          </div>
+        </b-col>
+      </b-row>
+    </b-card>
+
     <b-card>
       <div slot="header">
         <b-row class="d-flex justify-content-between px-3">
@@ -144,7 +163,8 @@ export default {
       todayWorks: [],
       categoryName: '',
       categoryColor: '',
-      selectedValue: new Date()
+      selectedValue: new Date(),
+      todoList: []
     }
   },
   mounted() {
@@ -176,6 +196,12 @@ export default {
         endDateTime: new Date('2018/12/10/10:45:00'),
         what: '출근'
       }
+    ];
+
+    this.todoList = [
+      { id: 1, content: 'easy english 듣기', done: false },
+      { id: 2, content: '한복 맡기기', done: false },
+      { id: 3, content: '운동화 세탁', done: false }
     ];
   }
 }
