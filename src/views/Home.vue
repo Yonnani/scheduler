@@ -2,7 +2,8 @@
   <div class="animated fadeIn pt-5">
     <b-card header="To do 리스트">
       <b-row>
-        <b-col>
+        <b-col class="d-flex justify-content-between">
+          <b-form-input v-model="newTodo" class="mr-2"></b-form-input>
           <b-button class="float-right" variant="outline-primary">Add To Do</b-button>
         </b-col>
       </b-row>
@@ -164,7 +165,8 @@ export default {
       categoryName: '',
       categoryColor: '',
       selectedValue: new Date(),
-      todoList: []
+      todoList: [],
+      newTodo: ''
     }
   },
   mounted() {
